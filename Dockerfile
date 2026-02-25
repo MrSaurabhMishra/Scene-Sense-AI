@@ -1,5 +1,5 @@
 # 1. Base Python image
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 # 2. Install system dependencies for OpenCV/YOLO
 RUN apt-get update && apt-get install -y \
