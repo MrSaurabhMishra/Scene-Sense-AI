@@ -10,7 +10,7 @@ st.header("Computer Vision & GenAI Assistant")
 
 # API Setup
 api_key = os.getenv("GEMINI_API_KEY") # GitHub Secrets se aayega
-client = genai.Client(api_key=api_key)
+client = genai.Client(api_key=api_key, http_options={'api_version': 'v1'})
 # Model Load (YOLOv8 Nano - Sabse fast aur light)
 yolo_model = YOLO('yolov8n.pt') 
 
