@@ -11,8 +11,7 @@ st.header("Computer Vision & GenAI Assistant")
 
 # API Setup
 api_key = os.getenv("GEMINI_API_KEY") # GitHub Secrets se aayega
-client = genai.Client(api_key=api_key, http_options={'api_version': 'v1'})
-# Model Load (YOLOv8 Nano - Sabse fast aur light)
+client = genai.Client(api_key=api_key)# Model Load (YOLOv8 Nano - Sabse fast aur light)
 yolo_model = YOLO('yolov8n.pt') 
 
 uploaded_file = st.file_uploader("Upload an Image...", type=["jpg", "jpeg", "png"])
@@ -41,13 +40,8 @@ if uploaded_file is not None:
             img_bytes = img_bytes.getvalue()
 
             response = client.models.generate_content(
-               model="gemini-1.5-flash-latest",
-                contents=[
-                   {"role": "user", "parts": [
-                      {"text": prompt},
-                      {"inline_data": {"mime_type": "image/png", "data": img_bytes}}
-                   ]}
-               ]
+                model="gemini-1.5-flash", # <--- Sirf itna rakhein
+                contents=[prompt, img]
             )
             
             # Display Results
