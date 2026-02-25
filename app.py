@@ -3,6 +3,7 @@ from google import genai
 from ultralytics import YOLO
 from PIL import Image
 import os
+import io
 
 # UI Configuration
 st.set_page_config(page_title="YOLO + Gemini Vision AI")
@@ -35,9 +36,18 @@ if uploaded_file is not None:
             # Step 2: Gemini Summary based on YOLO results
             prompt = f"I have detected the following objects in an image: {unique_objects}. Based on these objects, provide a professional summary of what this scene might be and its context."
             
+            img_bytes = io.BytesIO()
+            img.save(img_bytes, format="PNG")
+            img_bytes = img_bytes.getvalue()
+
             response = client.models.generate_content(
-                model="gemini-1.5-flash",
-                contents=[prompt, img]
+               model="gemini-1.5-flash-latest",
+                contents=[
+                   {"role": "user", "parts": [
+                      {"text": prompt},
+                      {"inline_data": {"mime_type": "image/png", "data": img_bytes}}
+                   ]}
+               ]
             )
             
             # Display Results
