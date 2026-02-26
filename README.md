@@ -1,7 +1,8 @@
 # 🔍 Scene Sense AI  
 ### AI-Powered Computer Vision & Contextual Scene Understanding System
 
-VisionSense AI is an intelligent computer vision application that combines **YOLOv8 object detection** with **Google Gemini Generative AI** to analyze images and generate meaningful, professional scene descriptions. The application detects objects present in an image and uses GenAI to infer the broader context of the scene.
+VisionSense AI is an intelligent computer vision application that combines **YOLOv8 object detection** with **Google Gemini Generative AI** to analyze images and generate meaningful, professional scene descriptions. The application detects objects present in an image and uses GenAI to infer the broader context of the scenes.
+click here:- https://visionary-gen-ai.onrender.com/
 
 ---
 
